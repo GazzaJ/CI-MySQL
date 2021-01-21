@@ -14,7 +14,8 @@ connection = pymysql.connect(host='localhost',
 #Run a query
 try:
     with connection.cursor() as cursor:                
-        cursor.execute("UPDATE Friends SET age = 22 WHERE name = 'Bob';")
+        cursor.execute("UPDATE Friends SET age = %s WHERE name = %s;",
+        (30, 'Bob'))
         connection.commit()
 #Close the connection
 finally:
