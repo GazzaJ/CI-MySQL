@@ -14,7 +14,7 @@ connection = pymysql.connect(host='localhost',
 #Run a query
 try:
     with connection.cursor() as cursor:
-        rows = cursor.execute("DELETE FROM Friends WHERE name = %s;", 'Bob')
+        rows = cursor.executemany("DELETE FROM Friends WHERE name = %s;", ['Bob', 'Jim'])
         connection.commit()
 #Close the connection
 finally:
